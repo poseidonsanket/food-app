@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "\"jest\""
+    "test": "jest"
   },
   "keywords": [
-    "\"food-app\""
+    "food-app"
   ],
-  "author": "\"sanket\"",
+  "author": "sanket",
   "license": "ISC"
 }
