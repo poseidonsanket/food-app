@@ -25,18 +25,16 @@ const Body = () => {
     );
   };
 
-  if (listOfRestaurants.length === 0) {
-    return <ShimmerUI/>;
-  }
+  //Conditional Rendering
 
-  return (
+  return listOfRestaurants.length === 0 ? <ShimmerUI/> : (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.data.avgRating > 4
+              (res) => res.info.avgRating > 4
             );
             setListOfRestraunt(filteredList);
           }}
