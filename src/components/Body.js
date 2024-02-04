@@ -6,7 +6,7 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
   const [filteredRestaurent,setFilteredRestaurent] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [found,setFound] = useState("");
+  const [searchFound,setSearchFound] = useState("");
 
   //Whenever There Is change in state variable react rerenders component
 
@@ -50,10 +50,11 @@ const Body = () => {
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               if(searchRestaurent.length === 0){
-                setFound("No results Found");
+                setSearchFound("No results Found");
                 setFilteredRestaurent([]);
               }
               else{
+                setSearchFound("");
                 setFilteredRestaurent(searchRestaurent);
               }
             }}
@@ -74,7 +75,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        <h1>{found}</h1>
+        <h1>{searchFound}</h1>
         {filteredRestaurent.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
