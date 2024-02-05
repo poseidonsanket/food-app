@@ -4,9 +4,9 @@ import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
-  const [filteredRestaurent,setFilteredRestaurent] = useState([]);
+  const [filteredRestaurent, setFilteredRestaurent] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [searchFound,setSearchFound] = useState("");
+  const [searchFound, setSearchFound] = useState("");
 
   //Whenever There Is change in state variable react rerenders component
 
@@ -25,7 +25,9 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
-    setFilteredRestaurent(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurent(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   //Conditional Rendering
@@ -49,11 +51,10 @@ const Body = () => {
               const searchRestaurent = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              if(searchRestaurent.length === 0){
+              if (searchRestaurent.length === 0) {
                 setSearchFound("No results Found");
                 setFilteredRestaurent([]);
-              }
-              else{
+              } else {
                 setSearchFound("");
                 setFilteredRestaurent(searchRestaurent);
               }
