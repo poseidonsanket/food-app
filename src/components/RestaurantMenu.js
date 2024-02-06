@@ -7,21 +7,21 @@ import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
 
-  const {resId} = useParams();
+  const { resId } = useParams();
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(Menu_Api + resId + "&catalog_qa=undefined&submitAction=ENTER");
+    const data = await fetch(
+      Menu_Api + resId + "&catalog_qa=undefined&submitAction=ENTER"
+    );
 
     const json = await data.json();
 
     setResInfo(json);
-    console.log(
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-    );
+    console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR);
   };
   if (resInfo === null) return <ShimmerUI />;
   const { name, cuisines, costForTwoMessage } =
@@ -33,8 +33,7 @@ const RestaurantMenu = () => {
     <div>
       <h1>{name}</h1>
       <p>
-        {cuisines.join(" , ")} -{" "}
-        {costForTwoMessage}
+        {cuisines.join(" , ")} - {costForTwoMessage}
       </p>
       <ul>
         {itemCards.map((item) => (
