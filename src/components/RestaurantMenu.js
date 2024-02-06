@@ -31,10 +31,10 @@ const RestaurantMenu = () => {
       ?.card;
   return (
     <div>
-      <h1>{resInfo?.data?.cards[0]?.card?.card?.info.name}</h1>
+      <h1>{name}</h1>
       <p>
-        {resInfo?.data?.cards[0]?.card?.card?.info.cuisines.join(" , ")} -{" "}
-        {resInfo?.data?.cards[0]?.card?.card?.info.costForTwoMessage}
+        {cuisines.join(" , ")} -{" "}
+        {costForTwoMessage}
       </p>
       <ul>
         {itemCards.map((item) => (
