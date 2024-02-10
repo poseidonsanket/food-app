@@ -7,8 +7,16 @@ class UserClass extends React.Component {
     this.state = {
       count: 0,
     };
+
+    console.log("Constructor Called");
+  }
+
+  componentDidMount() {
+    console.log("Component Loaded");
   }
   render() {
+    console.log("Render Called");
+
     return (
       <div className="user-card">
         <h1>Class Based Component</h1>
