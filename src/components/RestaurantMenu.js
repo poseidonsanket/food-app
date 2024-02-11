@@ -1,36 +1,20 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
-import { Menu_Api } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
 
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      Menu_Api + resId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-
-    const json = await data.json();
-
-    setResInfo(json);
-  };
+  const resInfo = useRestaurantMenu(resId);
+  
   if (resInfo === null) return <ShimmerUI />;
   const { name, cuisines, costForTwoMessage } =
     resInfo?.data?.cards[0]?.card?.card?.info;
   const { itemCards } =
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-  if (itemCards === null) {
-    return <h1>Oops Menu Not Available</h1>;
-  }
   return (
     <div>
       <h1>{name}</h1>
