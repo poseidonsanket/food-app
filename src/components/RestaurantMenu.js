@@ -21,7 +21,6 @@ const RestaurantMenu = () => {
     const json = await data.json();
 
     setResInfo(json);
-    console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR);
   };
   if (resInfo === null) return <ShimmerUI />;
   const { name, cuisines, costForTwoMessage } =
@@ -29,6 +28,9 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
+  if (itemCards === null) {
+    return <h1>Oops Menu Not Available</h1>;
+  }
   return (
     <div>
       <h1>{name}</h1>
