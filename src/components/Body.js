@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { isOpenLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
   const [filteredRestaurent, setFilteredRestaurent] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchFound, setSearchFound] = useState("");
+
+  const RestaurantCardOpen = isOpenLabel(RestaurantCard);
 
   //Whenever There Is change in state variable react rerenders component
 
@@ -29,6 +31,9 @@ const Body = () => {
     );
 
     setFilteredRestaurent(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -54,7 +59,8 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           ></input>
-          <button className="m-4 px-4 py-1 bg-blue-400 w-20 rounded-lg"
+          <button
+            className="m-4 px-4 py-1 bg-blue-400 w-20 rounded-lg"
             onClick={() => {
               const searchRestaurent = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -90,7 +96,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.isOpen ? (
+              <RestaurantCardOpen resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
