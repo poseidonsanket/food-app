@@ -36,9 +36,13 @@ class UserClass extends React.Component {
 
     const { name, location, html_url } = this.state.userInfo;
     return (
-      <div className="m-1 p-4 border border-solid border-black border-4">
+      <div className="m-1 p-4 border-solid border-black border-4">
         <h1>Class Based Component</h1>
-        <h1><a href={html_url} target="_blank">Github Link</a></h1>
+        <h1>
+          <a href={html_url} target="_blank">
+            Github Link
+          </a>
+        </h1>
         <h2>Name: {name}</h2>
         <h2>Location: {location}</h2>
         <h3>Contact: sanketdadali05@gmail.com</h3>

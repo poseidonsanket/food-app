@@ -24,7 +24,6 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
 
     setListOfRestraunt(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -96,7 +95,7 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            {restaurant.info.isOpen ? (
+            {restaurant.info.availability.opened ? (
               <RestaurantCardOpen resData={restaurant} />
             ) : (
               <RestaurantCard resData={restaurant} />
