@@ -1,7 +1,7 @@
 import React from "react";
 
-const ItemList = ({ items,dummy }) => {
-  console.log(dummy)
+const ItemList = ({ items, dummy }) => {
+  console.log(dummy);
   return items === undefined ? (
     <h1>No items Available</h1>
   ) : (
@@ -14,7 +14,11 @@ const ItemList = ({ items,dummy }) => {
           <div>
             <div className="py-2 px-2 text-left font-bold">
               <span className="pr-2">{item.card.info.name} - </span>
-              <span>₹{item.card.info.price / 100 || item.card.info.defaultPrice/100} </span>
+              <span>
+                ₹
+                {item.card.info.price / 100 ||
+                  item.card.info.defaultPrice / 100}{" "}
+              </span>
             </div>
             <p className="text-sm text-left">{item.card.info.description}</p>
           </div>

@@ -1,8 +1,9 @@
 import RestaurantCard, { isOpenLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
@@ -11,6 +12,8 @@ const Body = () => {
   const [searchFound, setSearchFound] = useState("");
 
   const RestaurantCardOpen = isOpenLabel(RestaurantCard);
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   //Whenever There Is change in state variable react rerenders component
 
@@ -30,9 +33,6 @@ const Body = () => {
     );
 
     setFilteredRestaurent(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -87,6 +87,15 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <div className="p-4 font-bold">UserName:</div>
+        <input
+          className="p-2 border border-solid border-black"
+          type="text"
+          value={loggedInUser}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        ></input>
       </div>
       <div className="flex flex-wrap">
         <h1>{searchFound}</h1>

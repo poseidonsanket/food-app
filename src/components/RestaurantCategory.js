@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ catData, showItems, setShowIndex,dummy }) => {
+const RestaurantCategory = ({ catData, showItems, setShowIndex, dummy }) => {
   const arr = catData?.itemCards;
   let length1 = 0;
   if (arr) {
@@ -22,7 +22,7 @@ const RestaurantCategory = ({ catData, showItems, setShowIndex,dummy }) => {
           </span>
           <span>⬇️</span>
         </div>
-        {showItems && <ItemList items={catData?.itemCards} dummy={dummy}/>}
+        {showItems && <ItemList items={catData?.itemCards} dummy={dummy} />}
       </div>
     </div>
   );
