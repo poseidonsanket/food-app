@@ -1,7 +1,7 @@
 import React from "react";
 
-const ItemList = ({ items }) => {
-  console.log(items)
+const ItemList = ({ items,dummy }) => {
+  console.log(dummy)
   return items === undefined ? (
     <h1>No items Available</h1>
   ) : (
