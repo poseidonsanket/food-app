@@ -1,14 +1,15 @@
 import React from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ catData, showItems, setShowIndex, dummy }) => {
+const RestaurantCategory = ({ catData, showItems, setShowIndex, dummy , sectionIndex }) => {
   const arr = catData?.itemCards;
   let length1 = 0;
   if (arr) {
     length1 = arr.length;
   }
   const handleClick = () => {
-    setShowIndex();
+    const nextIndex = showItems ? null : sectionIndex;
+    setShowIndex(nextIndex);
   };
   return (
     <div className="text-center">
