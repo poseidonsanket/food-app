@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
-import UserContext from "../utils/UserContext";
+import { UserContext } from "../utils/UserContext";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  const {loggedInUser} = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
     resData?.info;
 
@@ -31,8 +31,10 @@ export const isOpenLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute text-white bg-black m-2 p-2 rounded-lg">Open Now</label>
-        <RestaurantCard {...props}/>
+        <label className="absolute text-white bg-black m-2 p-2 rounded-lg">
+          Open Now
+        </label>
+        <RestaurantCard {...props} />
       </div>
     );
   };

@@ -2,8 +2,8 @@ import RestaurantCard, { isOpenLabel } from "./RestaurantCard";
 import { useContext, useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import { UserContext } from "../utils/UserContext";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);

@@ -3,12 +3,12 @@ import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
+import { UserContext } from "../utils/UserContext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
   const [btnName, setBtnName] = useState("Login");
-  const {loggedInUser} = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
   return (
     <div className="flex justify-between items-center shadow-lg mb-6 bg-gray-200">
       <div className="w-56 pl-8 ">
@@ -18,7 +18,9 @@ const Header = () => {
       </div>
       <div className="flex justify-evenly">
         <ul className="flex">
-          <li className="px-4 font-bold text-lg">Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-4 font-bold text-lg">
+            Online Status: {onlineStatus ? "🟢" : "🔴"}
+          </li>
           <li className="px-4 font-bold text-lg">
             <Link to="/">Home</Link>
           </li>
@@ -33,7 +35,7 @@ const Header = () => {
           </li>
           <li className="px-2 font-bold text-lg">Cart</li>
           <button
-            className="mr-6 ml-2 px-4 bg-blue-400 rounded-lg py-1"  
+            className="mr-6 ml-2 px-4 bg-blue-400 rounded-lg py-1"
             onClick={() => {
               btnName === "Login" ? setBtnName("LogOut") : setBtnName("Login");
             }}
