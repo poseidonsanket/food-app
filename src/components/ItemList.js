@@ -8,7 +8,7 @@ const ItemList = ({ items, dummy }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
-    dispatch(addItem(item.card.info.name));
+    dispatch(addItem(item));
   };
 
   return items === undefined ? (

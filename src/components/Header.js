@@ -38,7 +38,7 @@ const Header = () => {
           <li className="px-4 font-bold text-lg">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-2 font-bold text-lg">Cart ({cartItems.length})</li>
+          <li className="px-2 font-bold text-lg"><Link to="/cart">Cart ({cartItems.length})</Link></li>
           <button
             className="mr-6 ml-2 px-4 bg-blue-400 rounded-lg py-1"
             onClick={() => {
