@@ -1,7 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice";
 
 const ItemList = ({ items, dummy }) => {
   console.log(dummy);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item.card.info.name));
+  };
+
   return items === undefined ? (
     <h1>No items Available</h1>
   ) : (
@@ -24,7 +33,10 @@ const ItemList = ({ items, dummy }) => {
           </div>
           <div className="w-3/12 p-4">
             <div className="absolute">
-              <button className="p-2 shadow-lg rounded-lg bg-black text-white">
+              <button
+                className="p-2 shadow-lg rounded-lg bg-black text-white"
+                onClick={() => handleAddItem(item)}
+              >
                 Add+
               </button>
             </div>
