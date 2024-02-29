@@ -8,7 +8,6 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
-  console.log(resInfo);
 
   const dummy = "Dummy data";
 
@@ -16,11 +15,12 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <ShimmerUI />;
 
+
   const { name, cuisines, costForTwoMessage } =
-    resInfo?.data?.cards[2]?.card?.card?.info;
+    resInfo?.data?.cards[0]?.card?.card?.info;
 
   const categories =
-    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (res) => res.card?.card?.title
     );
   return (
@@ -29,7 +29,7 @@ const RestaurantMenu = () => {
       <p className="font-bold text-lg my-4">
         {cuisines.join(" , ")} - {costForTwoMessage}
       </p>
-      {categories.map((category, index) => (
+      {categories?.map((category, index) => (
         <RestaurantCategory
           key={category?.card?.card.title}
           catData={category?.card?.card}

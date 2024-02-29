@@ -44,7 +44,7 @@ const Body = () => {
 
   //Conditional Rendering
 
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <ShimmerUI />
   ) : (
     <div>
@@ -99,7 +99,7 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap">
         <h1>{searchFound}</h1>
-        {filteredRestaurent.map((restaurant) => (
+        {filteredRestaurent?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
