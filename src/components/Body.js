@@ -52,6 +52,7 @@ const Body = () => {
         <div>
           <input
             className="ml-4 border border-solid border-black"
+            data-testid="searchInput"
             type="text"
             value={searchText}
             onChange={(e) => {
@@ -61,10 +62,10 @@ const Body = () => {
           <button
             className="m-4 px-4 py-1 bg-blue-400 w-20 rounded-lg"
             onClick={() => {
-              const searchRestaurent = listOfRestaurants.filter((res) =>
+              const searchRestaurent = listOfRestaurants?.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              if (searchRestaurent.length === 0) {
+              if (searchRestaurent?.length === 0) {
                 setSearchFound("No results Found");
                 setFilteredRestaurent([]);
               } else {

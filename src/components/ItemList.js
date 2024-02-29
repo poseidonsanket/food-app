@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/CartSlice";
 
 const ItemList = ({ items, dummy }) => {
-  console.log(dummy);
 
   const dispatch = useDispatch();
 
@@ -17,6 +16,7 @@ const ItemList = ({ items, dummy }) => {
     <div>
       {items.map((item) => (
         <div
+          data-testid="foodItems"
           key={item.card.info.id}
           className="p-2 m-2 border border-gray-200 border-b-4 flex justify-between"
         >
